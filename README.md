@@ -118,16 +118,92 @@ app.include_router(router, prefix="/admin")
 - **Filtering & Pagination**: Built-in support for filtering and pagination
 - **SQLAlchemy Support**: First-class support for SQLAlchemy async models
 - **Type Safety**: Built with Pydantic for data validation
+- **Manifest API**: Dynamic resource discovery for building admin UIs
 
 ## API Endpoints
 
 Once you've registered your admin classes and included the router, the following endpoints will be available:
 
+### Manifest API
+
+- `GET /admin/manifest` - Get admin manifest with all registered resources and their configurations
+
+The manifest endpoint returns a JSON object containing metadata about all registered admin resources, filtered by user permissions. This is particularly useful for building dynamic admin UIs that can discover available resources and their capabilities at runtime.
+
+**Response Structure:**
+
+```json
+{
+  "resources": [
+    {
+      "name": "users",
+      "verbose_name": "users",
+      "actions": ["list", "create", "update", "delete", "retrieve"],
+      "list_config": {
+        "display_fields": ["id", "name", "email"],
+        "filter_fields": ["name"],
+        "search_fields": ["name", "email"],
+        "ordering": ["id"]
+      },
+      "create_schema": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "x-field-type": "char",
+            "maxLength": 100
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "x-field-type": "email"
+          }
+        },
+        "required": ["name", "email"]
+      },
+      "update_schema": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "x-field-type": "char",
+            "maxLength": 100
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "x-field-type": "email"
+          }
+        }
+      }
+    }
+  ]
+}
+```
+
+**Key Features:**
+
+- **Permission-aware**: Only returns resources and actions the user has permission to access
+- **Schema information**: Includes JSON Schema for create and update forms with form field type metadata
+- **List configuration**: Provides display fields, filter fields, search fields, and ordering preferences
+- **Action-based**: Lists available actions (list, create, update, delete, retrieve) per resource
+
+### CRUD Endpoints
+
 - `POST /admin/{resource_name}/create` - Create a new resource instance
 - `GET /admin/{resource_name}/list` - List resource instances with filtering and pagination
+  - Query parameters:
+    - `limit` (int): Number of items per page (default: 10)
+    - `offset` (int): Number of items to skip (default: 0)
+    - `filters` (str): JSON-encoded filters dictionary
+    - `ordering` (str): Comma-separated field names (prefix with '-' for descending)
 - `GET /admin/{resource_name}/{lookup}/retrieve` - Retrieve a specific resource instance
 - `PATCH /admin/{resource_name}/{lookup}/update` - Update an existing resource instance
 - `DELETE /admin/{resource_name}/{lookup}/delete` - Delete a resource instance
+
+## Frontend Integration
+
+The manifest API makes it easy to build dynamic admin UIs. See [Building Admin UIs with shadcn/ui + Next.js](docs/shadcn-nextjs-integration.md) for a complete guide on integrating this SDK with modern frontend frameworks.
 
 ## Development
 
