@@ -1,0 +1,20 @@
+{
+    "isort.args": [
+        "--profile",
+        "black"
+    ],
+    "isort.interpreter": [
+        "${workspaceFolder}/.venv/bin/python"
+    ],
+    "isort.importStrategy": "fromEnvironment",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.isort": "always",
+        "source.fixAll.ruff": "always",
+        "source.organizeImports": "always"
+    },
+    "[helm]": {
+        "editor.defaultFormatter": "redhat.vscode-yaml",
+        "editor.autoIndent": "advanced"
+    }
+}
