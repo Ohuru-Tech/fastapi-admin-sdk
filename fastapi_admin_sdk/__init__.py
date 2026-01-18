@@ -1,7 +1,7 @@
 """FastAPI Admin SDK - A FastAPI admin SDK for building admin interfaces."""
 
 from fastapi_admin_sdk.admin import AdminRegistry, BaseAdmin, register
-from fastapi_admin_sdk.config import AdminSDKSettings, settings
+from fastapi_admin_sdk.config import AdminSDKSettings, get_settings
 from fastapi_admin_sdk.db import SessionFactory, get_session_factory
 from fastapi_admin_sdk.forms import (
     BaseFormField,
@@ -33,7 +33,7 @@ __all__ = [
     "router",
     "AdminService",
     "AdminSDKSettings",
-    "settings",
+    "get_settings",
     "get_session_factory",
     "SessionFactory",
     "BaseFormField",
