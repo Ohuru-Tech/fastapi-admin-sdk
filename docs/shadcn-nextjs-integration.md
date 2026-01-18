@@ -8,7 +8,7 @@ The FastAPI Admin SDK provides a manifest API (`GET /admin/manifest`) that retur
 
 ## Architecture
 
-```mermaid
+```text
 ┌─────────────────┐         ┌──────────────────┐         ┌─────────────────┐
 │   Next.js App   │  ────>  │  FastAPI Admin   │  ────>  │   Database      │
 │   (shadcn/ui)   │         │      SDK         │         │                 │
