@@ -16,5 +16,29 @@
     "[helm]": {
         "editor.defaultFormatter": "redhat.vscode-yaml",
         "editor.autoIndent": "advanced"
+    },
+    "editor.semanticTokenColorCustomizations": {
+        "[Night Owl]": {
+            "rules": {
+                // Variables & attributes
+                "variable": "#9CDCFE",
+                "property": "#9CDCFE",
+                // Function & method names
+                "function": "#82AAFF",
+                "method": "#82AAFF",
+                // Classes & types
+                "class": "#C792EA",
+                "type": "#C792EA",
+                // Parameters
+                "parameter": "#FFCB6B",
+                // Decorators (@pytest.fixture etc.)
+                "decorator": "#7FDBCA",
+                // Keywords (def, class, import, return)
+                "keyword": {
+                    "foreground": "#F78C6C",
+                    "bold": true
+                }
+            }
+        }
     }
 }
