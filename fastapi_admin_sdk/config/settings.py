@@ -1,7 +1,12 @@
+from functools import lru_cache
+from typing import Any, Dict
+
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
+_runtime_overrides: Dict[str, Any] = {}
 
-class Settings(BaseSettings):
+
+class AdminSDKSettings(BaseSettings):
     admin_db_url: str = "sqlite+aiosqlite:///:memory:"
     orm_type: str = "sqlalchemy"
 
@@ -12,4 +17,15 @@ class Settings(BaseSettings):
     )
 
 
-settings = Settings()
+def configure_settings(**kwargs):
+    global _runtime_overrides
+
+    _runtime_overrides.update(kwargs)
+
+    get_settings.cache_clear()
+
+
+@lru_cache
+def get_settings():
+    base_settings = AdminSDKSettings(**_runtime_overrides)
+    return base_settings

@@ -1,3 +1,3 @@
-from fastapi_admin_sdk.config.settings import Settings, settings
+from fastapi_admin_sdk.config.settings import AdminSDKSettings, settings
 
-__all__ = ["Settings", "settings"]
+__all__ = ["AdminSDKSettings", "settings"]
