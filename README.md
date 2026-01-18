@@ -1,9 +1,10 @@
 # FastAPI Admin SDK
 
-[![Coverage](https://codecov.io/gh/yourusername/fastapi-admin-sdk/branch/main/graph/badge.svg)](https://codecov.io/gh/yourusername/fastapi-admin-sdk)
-[![PyPI version](https://badge.fury.io/py/fastapi-admin-sdk.svg)](https://badge.fury.io/py/fastapi-admin-sdk)
+[![PyPI version](https://img.shields.io/pypi/v/fastapi-admin-sdk.svg)](https://pypi.org/project/fastapi-admin-sdk/)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
-[![Tests](https://img.shields.io/badge/tests-passing-brightgreen)](https://github.com/yourusername/fastapi-admin-sdk)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Tests](https://github.com/Ohuru-Tech/fastapi-admin-sdk/actions/workflows/publish.yml/badge.svg)](https://github.com/Ohuru-Tech/fastapi-admin-sdk/actions/workflows/publish.yml)
+[![codecov](https://codecov.io/gh/Ohuru-Tech/fastapi-admin-sdk/branch/main/graph/badge.svg?token=96PIBKDSFR)](https://codecov.io/gh/Ohuru-Tech/fastapi-admin-sdk)
 
 A FastAPI admin SDK for building admin interfaces with resource management, permissions, and CRUD operations.
 
